@@ -11,6 +11,9 @@ npm start
 ```
 ## iOS
 Since this app is not published on appstore to run this app on iOS you will need to download ExpoGO app and there search for
+
 @matthew556/mmclab
 
-![ExpoQR](https://github.com/Matthew55661/MMCLab/blob/main/EXPOQR.png)
+![ExpoQR](https://github.com/Matthew55661/MMCLab/blob/main/EXPOQR.png)\
+here is a link to expo page 
+https://expo.io/@matthew556/mmclab
