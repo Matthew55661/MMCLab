@@ -4,6 +4,7 @@ import Reducer from './reducer'
 
 const initialState = {
     darkmode: false,
+    auto: false,
 
 };
 

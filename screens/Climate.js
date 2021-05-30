@@ -24,7 +24,7 @@ export default function Voice() {
         if (power == false)
             axios.all([
                 axios.post(
-                    URL + '/services/climate/turn_on--',
+                    URL + '/services/climate/turn_on',
                     0,
                     {
                         headers: {
@@ -38,7 +38,7 @@ export default function Voice() {
                         console.log(error);
                     }),
                 axios.post(
-                    URL + '/services/climate/set_hvac_mode--',
+                    URL + '/services/climate/set_hvac_mode',
                     0,
                     {
                         headers: {
@@ -58,7 +58,7 @@ export default function Voice() {
         else if (power == true) {
             axios
                 .post(
-                    URL + '/services/climate/turn_off--',
+                    URL + '/services/climate/turn_off',
                     0,
                     {
                         headers: {
@@ -76,7 +76,7 @@ export default function Voice() {
     function setTemp() {
         axios
             .post(
-                URL + '/services/climate/set_temperature--',
+                URL + '/services/climate/set_temperature',
                 { temperature: heat },
                 {
                     headers: {
@@ -95,7 +95,7 @@ export default function Voice() {
         if (fan == false) {
             axios
                 .post(
-                    URL + '/services/fan/turn_on--',
+                    URL + '/services/fan/turn_on',
                     0,
                     {
                         headers: {
@@ -112,7 +112,7 @@ export default function Voice() {
         else if (fan == true) {
             axios
                 .post(
-                    URL + '/services/fan/turn_off--',
+                    URL + '/services/fan/turn_off',
                     0,
                     {
                         headers: {
@@ -132,7 +132,7 @@ export default function Voice() {
         if (oscilate == false) {
             axios
                 .post(
-                    URL + '/services/fan/oscilate--',
+                    URL + '/services/fan/oscilate',
                     { oscillating: true },
                     {
                         headers: {
@@ -149,7 +149,7 @@ export default function Voice() {
         else if (oscilate == true) {
             axios
                 .post(
-                    URL + '/services/fan/oscilate--',
+                    URL + '/services/fan/oscilate',
                     { oscillating: false },
                     {
                         headers: {
@@ -168,7 +168,7 @@ export default function Voice() {
     function setspeed() {
         axios
             .post(
-                URL + '/services/fan/set_percentage--',
+                URL + '/services/fan/set_percentage',
                 { percentage: fanspeed },
                 {
                     headers: {
@@ -198,18 +198,18 @@ export default function Voice() {
                 shadowOpacity: 0.,
                 shadowRadius: 6,
                 elevation: 20,
-                borderRadius: 20, flex: 0.5, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 12, padding: 12
+                borderRadius: 20, flex: 0.5, flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', margin: 12, padding: 12
             }}>
-                <TouchableOpacity onPress={() => pressHeat()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', margin: 16, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? power ? "#101820FF" : '#F2AA4CFF' : power ? "#f2f2f2" : '#F2AA4CFF' }}>
+                <TouchableOpacity onPress={() => pressHeat()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 16, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? power ? "#101820FF" : '#F2AA4CFF' : power ? "#f2f2f2" : '#F2AA4CFF' }}>
                     <Icon name='power' size={35} style={{ fontFamily: 'Montserrat', color: state.darkmode ? power ? "#F2AA4CFF" : '#101820FF' : power ? "#F2AA4CFF" : '#f2f2f2' }}></Icon>
                     <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? power ? "#F2AA4CFF" : '#101820FF' : power ? "#F2AA4CFF" : '#f2f2f2' }}>Napájanie</Text>
                 </TouchableOpacity>
-                < View style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
+                < View style={{ borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
                 </ View>
 
 
-                <TouchableOpacity onPress={() => setTemp()} style={{ paddingRight: 22, flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
-                    <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? '#101820FF' : "#f2f2f2" }}> Nastaviť</Text>
+                <TouchableOpacity onPress={() => setTemp()} style={{ paddingRight: 22, borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
+                    <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? '#101820FF' : "#f2f2f2", fontSize: 20 }}> Nastaviť</Text>
                 </TouchableOpacity>
 
 
@@ -263,7 +263,7 @@ export default function Voice() {
 
                     <View style={{ flex: 1, alignSelf: 'flex-start' }}>
                         <TouchableOpacity onPress={() => setspeed()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
-                            <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? '#101820FF' : "#f2f2f2" }}> Nastaviť</Text>
+                            <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? '#101820FF' : "#f2f2f2", fontSize: 20, }}> Nastaviť</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

@@ -18,7 +18,7 @@ export default function Curtain() {
 
         axios
             .post(
-                URL + '/services/script/stop_zaves--',
+                URL + '/services/script/stop_zaves',
                 0,
                 {
                     headers: {
@@ -39,7 +39,7 @@ export default function Curtain() {
 
             axios
                 .post(
-                    URL + '/services/script/otvor_zaves--',
+                    URL + '/services/script/otvor_zaves',
                     0,
                     {
                         headers: {
@@ -58,7 +58,7 @@ export default function Curtain() {
 
             axios
                 .post(
-                    URL + '/services/script/zatvor_zaves--',
+                    URL + '/services/script/zatvor_zaves',
                     0, {
                     headers: {
                         Authorization: 'Bearer ' + token,

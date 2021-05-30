@@ -38,7 +38,7 @@ export default function App(props) {
         if (toggleLED == false) {
             axios
                 .post(
-                    URL + '/api/services/light/turn_on--',
+                    URL + '/api/services/light/turn_on',
                     reqbody,
                     {
                         headers: {
@@ -56,7 +56,7 @@ export default function App(props) {
         else if (toggleLED == true) {
             axios
                 .post(
-                    URL + "/api/services/light/turn_off--",
+                    URL + "/api/services/light/turn_off",
                     0, {
                     headers: {
                         Authorization: 'Bearer ' + token,
@@ -79,7 +79,7 @@ export default function App(props) {
         if (toggleLamp == false) {
             axios
                 .post(
-                    URL + "/api/services/script/zapni_lampu--",
+                    URL + "/api/services/script/zapni_lampu",
                     0,
                     {
                         headers: {
@@ -97,7 +97,7 @@ export default function App(props) {
         else if (toggleLamp == true) {
             axios
                 .post(
-                    URL + "/api/services/script/vypni_lampu--",
+                    URL + "/api/services/script/vypni_lampu",
                     0, {
                     headers: {
                         Authorization: 'Bearer ' + token,
@@ -120,7 +120,7 @@ export default function App(props) {
         if (toggleBiglamp == false) {
             axios
                 .post(
-                    URL + "/api/services/script/stropne_osvetlenie--",
+                    URL + "/api/services/script/stropne_osvetlenie",
                     0,
                     {
                         headers: {
@@ -138,7 +138,7 @@ export default function App(props) {
         else if (toggleBiglamp == true) {
             axios
                 .post(
-                    URL + "/api/services/script/stropne_osvetlenie--",
+                    URL + "/api/services/script/stropne_osvetlenie",
                     0, {
                     headers: {
                         Authorization: 'Bearer ' + token,

@@ -5,9 +5,15 @@ const Reducer = (state, action) => {
                 ...state,
                 darkmode: action.payload
             };
+        case 'SET_AUTO':
+            return {
+                ...state,
+                auto: action.payload
+            };
 
         default:
             return state;
+
     }
 };
 

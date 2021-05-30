@@ -51,7 +51,7 @@ export default function plugs() {
         if (items.isToggled == false && items.id == '1') {
             axios
                 .post(
-                    URL + "/api/services/script/zapni_lampu--",
+                    URL + "/api/services/script/zapni_lampu",
                     0,
                     {
                         headers: {
@@ -67,7 +67,7 @@ export default function plugs() {
         else if (items.isToggled == true && items.id == '1') {
             axios
                 .post(
-                    URL + "/api/services/media_player/vypni_lampu--",
+                    URL + "/api/services/media_player/vypni_lampu",
                     0, {
                     headers: {
                         Authorization: 'Bearer ' + token
@@ -82,7 +82,7 @@ export default function plugs() {
         else if (items.isToggled == true && items.id == '2') {
             axios
                 .post(
-                    URL + "/api/services/media_player/turn_off--",
+                    URL + "/api/services/media_player/turn_off",
                     0, {
                     headers: {
                         Authorization: 'Bearer ' + token
@@ -97,7 +97,7 @@ export default function plugs() {
         else if (items.isToggled == false && items.id == '2') {
             axios
                 .post(
-                    URL + "/api/services/media_player/turn_on--",
+                    URL + "/api/services/media_player/turn_on",
                     0, {
                     headers: {
                         Authorization: 'Bearer ' + token
