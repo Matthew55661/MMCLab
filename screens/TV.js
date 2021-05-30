@@ -32,7 +32,7 @@ export default function TV() {
         setinput(!input)
         axios
             .post(
-                URL + 'api/services/script/prepni_televizor',
+                URL + '/api/services/script/prepni_televizor',
                 0,
                 {
                     headers: {
@@ -52,7 +52,7 @@ export default function TV() {
         setinput(!input)
         axios
             .post(
-                URL + 'api/services/script/prepni_blueray',
+                URL + '/api/services/script/prepni_blueray',
                 0,
                 {
                     headers: {
@@ -71,7 +71,7 @@ export default function TV() {
         if (powerHIFI == true) {
             axios
                 .post(
-                    URL + 'api/services/media_player/turn_on',
+                    URL + '/api/services/media_player/turn_on',
                     0,
                     {
                         headers: {
@@ -89,7 +89,7 @@ export default function TV() {
         else if (powerHIFI == false) {
             axios
                 .post(
-                    URL + 'api/services/media_player/turn_off',
+                    URL + '/api/services/media_player/turn_off',
                     0,
                     {
                         headers: {
@@ -110,7 +110,7 @@ export default function TV() {
         if (toggleMute == true) {
             axios
                 .post(
-                    URL + 'api/services/media_player/volume_mute',
+                    URL + '/api/services/media_player/volume_mute',
                     { is_volume_muted: false },
                     {
                         headers: {
@@ -127,7 +127,7 @@ export default function TV() {
         else if (toggleMute == false) {
             axios
                 .post(
-                    URL + 'api/services/media_player/volume_mute',
+                    URL + '/api/services/media_player/volume_mute',
                     { is_volume_muted: true },
                     {
                         headers: {
@@ -145,7 +145,7 @@ export default function TV() {
     function pressShuffleHandler() {
         axios
             .post(
-                URL + 'api/services/media_player/shuffle_set',
+                URL + '/api/services/media_player/shuffle_set',
                 0,
                 {
                     headers: {
@@ -165,7 +165,7 @@ export default function TV() {
         if (stop == true) {
             axios
                 .post(
-                    URL + 'api/services/media_player/media_play',
+                    URL + '/api/services/media_player/media_play',
                     0,
                     {
                         headers: {
@@ -182,7 +182,7 @@ export default function TV() {
         else if (stop == false) {
             axios
                 .post(
-                    URL + 'api/services/media_player/media_stop',
+                    URL + '/api/services/media_player/media_stop',
                     0,
                     {
                         headers: {
@@ -200,7 +200,7 @@ export default function TV() {
     function leftHandler() {
         axios
             .post(
-                URL + 'api/services/media_player/media_previous_track',
+                URL + '/api/services/media_player/media_previous_track',
                 0,
                 {
                     headers: {
@@ -217,7 +217,7 @@ export default function TV() {
     function rightHandler() {
         axios
             .post(
-                URL + 'api/services/media_player/media_next_track',
+                URL + '/api/services/media_player/media_next_track',
                 0,
                 {
                     headers: {
@@ -234,7 +234,7 @@ export default function TV() {
     function upHandler() {
         axios
             .post(
-                URL + 'api/services/media_player/volume_up',
+                URL + '/api/services/media_player/volume_up',
                 0,
                 {
                     headers: {
@@ -251,7 +251,7 @@ export default function TV() {
     function downHandler() {
         axios
             .post(
-                URL + 'api/services/media_player/volume_down',
+                URL + '/api/services/media_player/volume_down',
                 0,
                 {
                     headers: {
@@ -268,7 +268,7 @@ export default function TV() {
     function playpausehandler() {
         axios
             .post(
-                URL + 'api/services/media_player/media_play_pause',
+                URL + '/api/services/media_player/media_play_pause',
                 0,
                 {
                     headers: {

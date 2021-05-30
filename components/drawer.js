@@ -10,13 +10,15 @@ import { useState } from 'react';
 import ToggleSwitch from 'toggle-switch-react-native'
 import React, { useEffect, useContext } from 'react';
 import { Context } from '../state/store';
-import ModalDropdown from 'react-native-modal-dropdown';
+import { DropDownMenu } from './DropDownMenu'
 
 export default function CustomDrawerContent(props) {
     const [state, dispatch] = useContext(Context);
-    const [open, setOpen] = useState(false);
+
     const [value, setValue] = useState(null);
-    const DEMO_OPTIONS_1 = ['dark', 'light', 'auto',];
+    const data = [{ key: 'dark', value: 'Dark' }, { key: 'light', value: 'Light' }, { key: 'auto', value: 'Auto' },];
+
+
     useEffect(() => {
 
         if (value == 'dark') {
@@ -66,24 +68,24 @@ export default function CustomDrawerContent(props) {
                     <DateTime color='#F2AA4CFF'></DateTime>
                 </View>
                 <View style={{ alignSelf: 'center', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ color: "#F2AA4CFF", fontFamily: 'Montserrat' }}>Darkmode</Text>
+
 
                 </View>
-                <View style={{
-                    padding: 16, width: '100%', flex: 0.3
-                }}>
-                    <ModalDropdown
-
-                        options={DEMO_OPTIONS_1}
-                        style={{ borderWidth: 2, borderRadius: 30, borderColor: '#F2AA4CFF', flex: 1, alignItems: 'center', justifyContent: 'center' }}
-
-                        onSelect={(index) => setValue(DEMO_OPTIONS_1[index])}
-                        textStyle={{ fontFamily: 'Montserrat', color: '#F2AA4CFF', textAlign: 'center' }}
-                        dropdownStyle={{ maxHeight: 150, backgroundColor: state.darkmode ? '#101820FF' : '#f2f2f2', borderColor: '#F2AA4CFF', borderWidth: 1, }}
-                        dropdownTextHighlightStyle={{ color: '#F2AA4CFF' }}
-                        dropdownTextStyle={{ backgroundColor: state.darkmode ? '#101820FF' : '#f2f2f2', fontFamily: 'Montserrat', color: '#F2AA4CFF', textAlign: 'center' }}
-                    />
+                <View style={{ paddingHorizontal: 10, width: '100%' }}>
+                    <Text style={{ color: "#F2AA4CFF", fontFamily: 'Montserrat', textAlign: 'center', paddingBottom: 8 }}>Farebný mód</Text>
+                    <DropDownMenu
+                        data={data}
+                        value={data[0]}
+                        itemHeight={32}
+                        onSelect={(item) => setValue(item.key)}
+                        style={{ borderColor: '#F2AA4CFF', borderWidth: 2, borderRadius: 20 }}
+                        textStyle={{ fontFamily: 'Montserrat', color: '#F2AA4CFF' }}
+                        dropDownStyle={{ backgroundColor: state.darkmode ? '#101820FF' : '#f2f2f2', }}
+                        dropDownItemStyle={{}}
+                        dropDownItemStyle={{}} />
                 </View>
+
+
             </View>
             <DrawerContentScrollView {...props}>
                 <DrawerItemList {...props} />

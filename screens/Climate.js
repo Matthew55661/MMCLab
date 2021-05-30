@@ -24,7 +24,7 @@ export default function Voice() {
         if (power == false)
             axios.all([
                 axios.post(
-                    URL + '/services/climate/turn_on',
+                    URL + '/api/services/climate/turn_on',
                     0,
                     {
                         headers: {
@@ -38,7 +38,7 @@ export default function Voice() {
                         console.log(error);
                     }),
                 axios.post(
-                    URL + '/services/climate/set_hvac_mode',
+                    URL + '/api/services/climate/set_hvac_mode',
                     0,
                     {
                         headers: {
@@ -58,7 +58,7 @@ export default function Voice() {
         else if (power == true) {
             axios
                 .post(
-                    URL + '/services/climate/turn_off',
+                    URL + '/api/services/climate/turn_off',
                     0,
                     {
                         headers: {
@@ -76,7 +76,7 @@ export default function Voice() {
     function setTemp() {
         axios
             .post(
-                URL + '/services/climate/set_temperature',
+                URL + '/api/services/climate/set_temperature',
                 { temperature: heat },
                 {
                     headers: {
@@ -95,7 +95,7 @@ export default function Voice() {
         if (fan == false) {
             axios
                 .post(
-                    URL + '/services/fan/turn_on',
+                    URL + '/api/services/fan/turn_on',
                     0,
                     {
                         headers: {
@@ -112,7 +112,7 @@ export default function Voice() {
         else if (fan == true) {
             axios
                 .post(
-                    URL + '/services/fan/turn_off',
+                    URL + '/api/services/fan/turn_off',
                     0,
                     {
                         headers: {
@@ -132,7 +132,7 @@ export default function Voice() {
         if (oscilate == false) {
             axios
                 .post(
-                    URL + '/services/fan/oscilate',
+                    URL + '/api/services/fan/oscilate',
                     { oscillating: true },
                     {
                         headers: {
@@ -149,7 +149,7 @@ export default function Voice() {
         else if (oscilate == true) {
             axios
                 .post(
-                    URL + '/services/fan/oscilate',
+                    URL + '/api/services/fan/oscilate',
                     { oscillating: false },
                     {
                         headers: {
@@ -168,7 +168,7 @@ export default function Voice() {
     function setspeed() {
         axios
             .post(
-                URL + '/services/fan/set_percentage',
+                URL + '/api/services/fan/set_percentage',
                 { percentage: fanspeed },
                 {
                     headers: {
