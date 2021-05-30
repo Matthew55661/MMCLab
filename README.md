@@ -1,5 +1,6 @@
 # MMCLab
-Multi-platform controll app for MMCLab written in React Native
+Multi-platform controll app for MMCLab written in React Native using JavaScript
+
 ## Android
 
 For Android installation, you can download prebuilt .apk or you can download whole package and build it yourself
