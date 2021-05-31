@@ -3,14 +3,16 @@ import {
     DrawerContentScrollView,
     DrawerItemList,
 } from '@react-navigation/drawer';
-import { StyleSheet, Text, View, ImageBackground, Image, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Button, Alert, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DateTime from '../components/dateTime';
 import { useState } from 'react';
 import ToggleSwitch from 'toggle-switch-react-native'
 import React, { useEffect, useContext } from 'react';
 import { Context } from '../state/store';
-import { DropDownMenu } from './DropDownMenu'
+import { DropDownMenu } from './DropDownMenu';
+
+
 
 export default function CustomDrawerContent(props) {
     const [state, dispatch] = useContext(Context);
@@ -62,7 +64,10 @@ export default function CustomDrawerContent(props) {
 
                 </View>
                 <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
-                    <Icon name="gitlab" size={155} color='#F2AA4CFF' />
+                    <Image
+
+                        source={require('../assets/logo_mmclab.png')}
+                    />
                 </View>
                 <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', }}>
                     <DateTime color='#F2AA4CFF'></DateTime>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, Button, Alert, SafeAreaView, TextInput, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Button, Alert, SafeAreaView, TextInput, KeyboardAvoidingView, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Header from '../components/header';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -28,12 +28,16 @@ export default function App(props) {
                             //fontWeight: 'bold',
                             fontFamily: 'Montserrat',
                         }}>MMCLab</Text>
-                        <Icon name="gitlab" size={55} color='white' />
+                        <Image
+
+                            source={require('../assets/logo_mmclab.png')}
+                        />
+
                     </View>
                     <View style={{ flex: 1, justifyContent: 'flex-start', }}>
                         <DateTime color='white'></DateTime>
-
                     </View>
+
                     <View style={{ flex: 1, justifyContent: 'flex-start', paddingBottom: 20 }} >
 
                         <TextInput
