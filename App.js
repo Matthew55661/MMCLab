@@ -1,3 +1,5 @@
+/*Hlavny file riesi sa tu len navigacia, nevykresluje sa tak ako zvysok*/
+
 import 'react-native-gesture-handler';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, Button, Alert } from 'react-native';
@@ -15,7 +17,7 @@ import Climate from './screens/Climate';
 import CustomDrawer from './components/drawer'
 
 import Store from './state/store';
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator();  //vytvorime si dva druhy navigacie
 const Stack = createStackNavigator();
 
 
@@ -27,7 +29,7 @@ function Mainmenu() {
   return (
 
 
-    <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />} initialRouteName="Lights" drawerContentOptions={{
+    <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />} initialRouteName="Lights" drawerContentOptions={{ // tu sa posiela custom drawer co je spraveny v drawer.js
       activeTintColor: '#F2AA4CFF',
       itemStyle: { borderRadius: 20, borderColor: '#F2AA4CFF', borderWidth: 2, },
       labelStyle: { fontFamily: 'Montserrat', color: '#F2AA4CFF' }
@@ -36,16 +38,16 @@ function Mainmenu() {
 
     }}>
 
-      <Drawer.Screen name="Svetlá" component={Lights} options={{
+      <Drawer.Screen name="Svetlá" component={Lights} options={{  // kazda screena ma meno, komponent kam presmeruje po kliknuti a ikonu
         drawerIcon: ({ focused, size }) => (
-          <Icon
+          <Icon               // ikony su materialcommunity size som nedefinoval lebo defaultne sa mi hodilu
             name="lightbulb"
             size={size}
-            color={focused ? '#F2AA4CFF' : '#ccc'}
+            color={focused ? '#F2AA4CFF' : '#ccc'} // focuse znamena farba ak to ma user stlacene, alebo je na tej screene a triggerne drawer tak je to vysvietene aby vedel kde sa nachadza
           />
         ),
       }} />
-      <Drawer.Screen name="Zástrčky" component={plugs} options={{
+      <Drawer.Screen name="Zásuvky" component={plugs} options={{
         drawerIcon: ({ focused, size }) => (
           <Icon
             name="power-plug"
