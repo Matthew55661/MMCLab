@@ -300,7 +300,11 @@ export default function TV() {
                 shadowRadius: 6,
                 elevation: 20,
                 borderRadius: 20, flex: 0.3, flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', margin: 12, padding: 12
+<<<<<<< HEAD
             }}>
+=======
+            }}> {/*Niektore buttony nemenia state lebo to nieje treba ako napr shuffle song tak sa stlaci prehodi sa pozadie a je to done nema zmyslel start shuffle a stop*/}
+>>>>>>> 29b9ad60f2a10948c8b6907d2b70b56d4a9d7171
                 <TouchableOpacity onPress={() => pressTVhandler()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 500, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? input ? "#101820FF" : '#F2AA4CFF' : input ? "#f2f2f2" : '#F2AA4CFF' }}>
                     <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? input ? "#F2AA4CFF" : '#101820FF' : input ? "#F2AA4CFF" : '#f2f2f2', fontSize: 35 }}>TV</Text>
                 </TouchableOpacity>

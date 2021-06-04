@@ -20,9 +20,15 @@ export default function App(props) {
 
 
         <View style={{ flex: 1 }}>
+<<<<<<< HEAD
             <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"}>
                 <ImageBackground source={require('../assets/background.jpg')} style={styles.container}>
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', transform: [{ scale: 0.4 }] }}>
+=======
+            <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"}> {/*pre iOS MUSI BYT, v androide sa to pousuva pekne samo, v iosku musime view kde je vybehne klavesnica tymto obalit*/}
+                <ImageBackground source={require('../assets/background.jpg')} style={styles.container}> {/*free pixelart pozadie, mam rad pixealarty*/}
+                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', transform: [{ scale: 0.4 }] }}> {/*scaleX a Y je uz deprecated*/}
+>>>>>>> 29b9ad60f2a10948c8b6907d2b70b56d4a9d7171
                         {/*Logo smartroomky*/}
                         <Image
 
