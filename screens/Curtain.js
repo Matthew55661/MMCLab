@@ -1,3 +1,4 @@
+/* nic extra screena na zaves axios je okomentovany v climate.ja a render funkcia tiez, len elementy a ich stylovanie */
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';

@@ -1,3 +1,5 @@
+/*Cela screena exportuje komponent datetime vo formate aky ma telefon nastaveny, 12hodinovy/24 atd*/
+
 import { Text, View } from 'react-native';
 import { useState, } from 'react'
 import React, { useEffect, useContext } from 'react';
@@ -11,7 +13,7 @@ export const DateTime = (props) => {
         const timer = setInterval(() => {
 
             setDate(new Date())
-            if (new Date().getHours() >= 18 || new Date().getHours() <= 6) {
+            if (new Date().getHours() >= 20 || new Date().getHours() <= 6) { /* nastavovanie automatickeho modu, ak je medzi 8pm a 6am a je auto tak prepne mod nic tazke*/
 
                 if (state.darkmode === false && state.auto === true) {
                     dispatch({ type: 'SET_DARKMODE', payload: true })

@@ -1,3 +1,6 @@
+/* screena na telku a HiFi vezu, vela tlacidiel vela funkcii ale nic extra nove , vsetko je zakomentovane v predoslych screenach, par buttonov ktore na stlacenie odoslu POST
+request  a state sa im meni on off a tak dalej,*/
+
 import React from 'react';
 import { render } from 'react-dom';
 import { StyleSheet, Text, View, Button, Dimensions, backgroundcolor, TouchableOpacity, SafeAreaView } from 'react-native';
@@ -298,15 +301,15 @@ export default function TV() {
                 elevation: 20,
                 borderRadius: 20, flex: 0.3, flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', margin: 12, padding: 12
             }}>
-                <TouchableOpacity onPress={() => pressTVhandler()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? input ? "#101820FF" : '#F2AA4CFF' : input ? "#f2f2f2" : '#F2AA4CFF' }}>
+                <TouchableOpacity onPress={() => pressTVhandler()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 500, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? input ? "#101820FF" : '#F2AA4CFF' : input ? "#f2f2f2" : '#F2AA4CFF' }}>
                     <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? input ? "#F2AA4CFF" : '#101820FF' : input ? "#F2AA4CFF" : '#f2f2f2', fontSize: 35 }}>TV</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => pressPowerHandler()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? togglePower ? "#101820FF" : '#F2AA4CFF' : togglePower ? "#f2f2f2" : '#F2AA4CFF', }}>
+                <TouchableOpacity onPress={() => pressPowerHandler()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 500, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? togglePower ? "#101820FF" : '#F2AA4CFF' : togglePower ? "#f2f2f2" : '#F2AA4CFF', }}>
                     <Icon name="power" size={35} color={state.darkmode ? togglePower ? "#F2AA4CFF" : '#101820FF' : togglePower ? "#F2AA4CFF" : '#f2f2f2'} />
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => pressBRhandler()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? input ? '#F2AA4CFF' : "#101820FF" : input ? '#F2AA4CFF' : "#f2f2f2" }}>
-                    <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? input ? '#101820FF' : "#F2AA4CFF" : input ? "#f2f2f2" : '#F2AA4CFF' }}>BLUERAY</Text>
+                <TouchableOpacity onPress={() => pressBRhandler()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 500, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? input ? '#F2AA4CFF' : "#101820FF" : input ? '#F2AA4CFF' : "#f2f2f2" }}>
+                    <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? input ? '#101820FF' : "#F2AA4CFF" : input ? "#f2f2f2" : '#F2AA4CFF' }}>BLU-RAY</Text>
                 </TouchableOpacity>
 
             </View>
@@ -327,26 +330,26 @@ export default function TV() {
                     borderRadius: 20,
                 }}>
                     <View style={{ flex: 1, }}>
-                        <TouchableOpacity onPress={() => pressPowerHandlerHIFI()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? powerHIFI ? "#101820FF" : '#F2AA4CFF' : powerHIFI ? "#f2f2f2" : '#F2AA4CFF', }}>
+                        <TouchableOpacity onPress={() => pressPowerHandlerHIFI()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 500, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? powerHIFI ? "#101820FF" : '#F2AA4CFF' : powerHIFI ? "#f2f2f2" : '#F2AA4CFF', }}>
                             <Icon name="power" size={35} color={state.darkmode ? powerHIFI ? "#F2AA4CFF" : '#101820FF' : powerHIFI ? "#F2AA4CFF" : '#f2f2f2'} />
                             <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? powerHIFI ? "#F2AA4CFF" : '#101820FF' : powerHIFI ? "#F2AA4CFF" : '#f2f2f2' }}>Power</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={{ flex: 1, }}>
-                        <TouchableOpacity onPress={() => pressShuffleHandler()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? "#101820FF" : "#f2f2f2" }}>
+                        <TouchableOpacity onPress={() => pressShuffleHandler()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 500, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? "#101820FF" : "#f2f2f2" }}>
                             <Icon name="shuffle-variant" size={35} color="#F2AA4CFF" />
                             <Text style={{ fontFamily: 'Montserrat', color: '#F2AA4CFF' }}>Shuffle</Text>
                         </TouchableOpacity>
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <TouchableOpacity onPress={() => pressStopHandler()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? stop ? "#101820FF" : '#F2AA4CFF' : stop ? "#f2f2f2" : '#F2AA4CFF' }}>
+                        <TouchableOpacity onPress={() => pressStopHandler()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 500, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? stop ? "#101820FF" : '#F2AA4CFF' : stop ? "#f2f2f2" : '#F2AA4CFF' }}>
                             <Icon name={stop ? 'play' : "stop"} size={35} color={state.darkmode ? stop ? "#F2AA4CFF" : '#101820FF' : stop ? "#F2AA4CFF" : '#f2f2f2'} />
                             <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? stop ? "#F2AA4CFF" : '#101820FF' : stop ? "#F2AA4CFF" : '#f2f2f2' }}>{stop ? 'play' : 'Stop'}</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={{ flex: 1, }}>
-                        <TouchableOpacity onPress={() => pressmuteHandler()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? toggleMute ? "#101820FF" : '#F2AA4CFF' : toggleMute ? "#f2f2f2" : '#F2AA4CFF' }}>
+                        <TouchableOpacity onPress={() => pressmuteHandler()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 500, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? toggleMute ? "#101820FF" : '#F2AA4CFF' : toggleMute ? "#f2f2f2" : '#F2AA4CFF' }}>
                             <Icon name={toggleMute ? 'volume-high' : "volume-mute"} size={35} color={state.darkmode ? toggleMute ? "#F2AA4CFF" : '#101820FF' : toggleMute ? "#F2AA4CFF" : '#f2f2f2'} />
                             <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? toggleMute ? "#F2AA4CFF" : '#101820FF' : toggleMute ? "#F2AA4CFF" : '#f2f2f2' }}>Mute</Text>
                         </TouchableOpacity>
