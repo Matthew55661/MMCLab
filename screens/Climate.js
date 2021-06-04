@@ -1,3 +1,4 @@
+/*screena na ovladanie kurenia a ventilatora*/
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
@@ -33,7 +34,7 @@ export default function Voice() {
                     }
                 )
 
-                    .catch(function (error) {
+                    .catch(function (error) {   /*ak by nastal error tak ho pacne do konzole a mozem debugovat*/
                         // handle error
                         console.log(error);
                     }),
@@ -200,20 +201,23 @@ export default function Voice() {
                 elevation: 20,
                 borderRadius: 20, flex: 0.5, flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', margin: 12, padding: 12
             }}>
-                <TouchableOpacity onPress={() => pressHeat()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 16, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? power ? "#101820FF" : '#F2AA4CFF' : power ? "#f2f2f2" : '#F2AA4CFF' }}>
+
+                <TouchableOpacity onPress={() => pressHeat()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 16, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? power ? "#101820FF" : '#F2AA4CFF' : power ? "#f2f2f2" : '#F2AA4CFF' }}>
                     <Icon name='power' size={35} style={{ fontFamily: 'Montserrat', color: state.darkmode ? power ? "#F2AA4CFF" : '#101820FF' : power ? "#F2AA4CFF" : '#f2f2f2' }}></Icon>
+
                     <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? power ? "#F2AA4CFF" : '#101820FF' : power ? "#F2AA4CFF" : '#f2f2f2' }}>Napájanie</Text>
                 </TouchableOpacity>
                 < View style={{ borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
                 </ View>
 
 
-                <TouchableOpacity onPress={() => setTemp()} style={{ paddingRight: 22, borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
+                <TouchableOpacity onPress={() => setTemp()} style={{ paddingRight: 22, borderColor: '#F2AA4CFF', margin: 14, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
                     <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? '#101820FF' : "#f2f2f2", fontSize: 20 }}> Nastaviť</Text>
                 </TouchableOpacity>
 
 
             </View>
+
             <View style={{ flex: 1, alignItems: 'center' }}>
                 <Text style={{ fontFamily: 'Montserrat', color: '#F2AA4CFF', fontSize: 35 }}>Teplota: {heat}°C </Text>
                 <Slider
@@ -262,7 +266,7 @@ export default function Voice() {
 
 
                     <View style={{ flex: 1, alignSelf: 'flex-start' }}>
-                        <TouchableOpacity onPress={() => setspeed()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
+                        <TouchableOpacity onPress={() => setspeed()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
                             <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? '#101820FF' : "#f2f2f2", fontSize: 20, }}> Nastaviť</Text>
                         </TouchableOpacity>
                     </View>

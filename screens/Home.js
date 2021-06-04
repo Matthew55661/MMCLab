@@ -1,3 +1,4 @@
+/* Uvodna screena ktoru user vidi ako prvu */
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Button, Alert, SafeAreaView, TextInput, KeyboardAvoidingView, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
@@ -21,16 +22,12 @@ export default function App(props) {
         <View style={{ flex: 1 }}>
             <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"}>
                 <ImageBackground source={require('../assets/background.jpg')} style={styles.container}>
-                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
-                        <Text style={{
-                            fontSize: 50,
-                            color: 'white',
-                            //fontWeight: 'bold',
-                            fontFamily: 'Montserrat',
-                        }}>MMCLab</Text>
+                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', transform: [{ scale: 0.4 }] }}>
+                        {/*Logo smartroomky*/}
                         <Image
 
-                            source={require('../assets/logo_mmclab.png')}
+
+                            source={require('../assets/logo-white.png')}
                         />
 
                     </View>
@@ -38,26 +35,32 @@ export default function App(props) {
                         <DateTime color='white'></DateTime>
                     </View>
 
-                    <View style={{ flex: 1, justifyContent: 'flex-start', paddingBottom: 20 }} >
+                    <View style={{ flex: 1, justifyContent: 'flex-start', paddingBottom: 8 }} >
+                        <View style={{ paddingBottom: 6 }}>
+                            {/*textinput kde user da svoje meno a ulozi sa to do globalnej premennej a vypise ho v draweri, neni to povinne*/}
+                            <TextInput
+                                onChangeText={(text) => setName(text)}
+                                style={{ textAlign: 'center', height: 40, borderColor: 'gray', borderRadius: 50, borderWidth: 2, backgroundColor: 'white', width: 300, alignSelf: 'center', opacity: 0.75, fontFamily: 'Montserrat', fontWeight: '900' }}
+                                placeholder="Používateľ"
+                                placeholderTextColor='black'
 
-                        <TextInput
-                            onChangeText={(text) => setName(text)}
-                            style={{ textAlign: 'center', height: 40, borderColor: 'gray', borderRadius: 50, borderWidth: 2, backgroundColor: 'white', width: 300, alignSelf: 'center', opacity: 0.75, fontFamily: 'Montserrat', fontWeight: '900' }}
-                            placeholder="Používateľ"
-                            placeholderTextColor='black'
 
+                            />
+                        </View>
+                        <View style={{ paddingBottom: 6 }}>
+                            {/* tento input je na heslo na roomku, cca nejake zabezpecenie , ulozi heslo do premennej a definujem tu este napr ze klavesnica je striktne numericka a secured entry ze po napisani hesla sa to zmeni na * */}
+                            <TextInput
+                                onChangeText={(text) => setPassword(text)}
+                                style={{ textAlign: 'center', height: 40, borderColor: 'gray', borderRadius: 50, borderWidth: 2, backgroundColor: 'white', width: 300, alignSelf: 'center', opacity: 0.75, fontFamily: 'Montserrat', }}
+                                placeholder="Heslo k miestnosti"
+                                placeholderTextColor='black'
 
-                        />
-                        <TextInput
-                            onChangeText={(text) => setPassword(text)}
-                            style={{ textAlign: 'center', height: 40, borderColor: 'gray', borderRadius: 50, borderWidth: 2, backgroundColor: 'white', width: 300, alignSelf: 'center', opacity: 0.75, fontFamily: 'Montserrat', }}
-                            placeholder="Heslo k miestnosti"
-                            placeholderTextColor='black'
-
-                            keyboardType='numeric'
-                            secureTextEntry
-                            maxLength={5}
-                        />
+                                keyboardType='numeric'
+                                secureTextEntry
+                                maxLength={5}
+                            />
+                        </View>
+                        {/* po stlaceni to checkne heslo co user zadal a bud ho pusti dalej alebo vyhodi popup ze zle heslo*/}
                         <TouchableOpacity onPress={() => {
                             if (password === '11112')
                                 props.navigation.replace('MainMenu')
@@ -70,7 +73,7 @@ export default function App(props) {
                             width: 200,
                             height: 30,
                             alignSelf: 'center',
-                            opacity: 0.75,
+                            marginBottom: 8,
                             borderRadius: 50,
                             borderColor: 'grey',
                             borderWidth: 2,
@@ -85,6 +88,34 @@ export default function App(props) {
                         }}>Login</Text>
 
                         </TouchableOpacity>
+                        {/* ak by niekto heslo nevedel tak mu vypise v BP na konci to mam*/}
+                        <View style={{ justifyContent: 'flex-end', flexDirection: 'column', flex: 1 }}>
+                            <TouchableOpacity onPress={() => {
+                                { Alert.alert('Lepšie prečítaj prílohy') }
+
+                            }
+
+                            } style={{
+                                paddingTop: 3,
+
+                                height: 30,
+
+                                alignSelf: 'center',
+                                borderRadius: 50,
+                                borderColor: 'grey',
+                                borderWidth: 2,
+                                backgroundColor: '#ccc',
+
+
+                            }}><Text style={{
+                                alignSelf: 'center',
+                                color: 'black',
+                                fontSize: 15,
+                                fontFamily: 'Montserrat'
+                            }}>Zabudnuté heslo</Text>
+
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </ImageBackground>
 
