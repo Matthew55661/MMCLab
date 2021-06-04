@@ -161,7 +161,7 @@ export default function App(props) {
         < SafeAreaView style={{ flex: 1, backgroundColor: state.darkmode ? '#101820FF' : '#f2f2f2' }
         }>
 
-            <Header title='Svetlá' />
+            <Header title='Svetlá' />           {/*3 buttony a color picker, buttony klasika nic extra*/}
 
             <View style={{
                 flex: 1,
