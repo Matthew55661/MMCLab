@@ -1,3 +1,4 @@
+/*screena na ovladanie kurenia a ventilatora*/
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
@@ -19,21 +20,21 @@ export default function Voice() {
     const [oscilate, setoscilate] = useState();
 
 
-    function pressHeat() {
+    function pressHeat() {          /*pressheat je funkcia ktora sa odpali po stlaceni tlacidla napajanie pre kurenie. Podla statu sa cey axios odosle bud vypnut alebo zapnut, a po stlaceni sa state zmeni pomocou setpower()*/
         setPower(!power)
         if (power == false)
-            axios.all([
+            axios.all([             /* tu odosielam na jeden press viac requestov takze to sa robi cez axios.all[] a  pole requestov*/
                 axios.post(
-                    URL + '/api/services/climate/turn_on',
+                    URL + '/api/services/climate/turn_on',      /*do URL som dal adresu Ngrok serveru co exposuje HA API, pouziva sa viac ako raz tak sa to oplati dat do premennej*/
                     0,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + token,   /* do headeru len token vygenerovany na stranke  */
                         },
                     }
                 )
 
-                    .catch(function (error) {
+                    .catch(function (error) {   /*ak by nastal error tak ho pacne do konzole a mozem debugovat*/
                         // handle error
                         console.log(error);
                     }),
@@ -185,10 +186,10 @@ export default function Voice() {
     }
 
 
-    return (
+    return (// horna cast screeny je pre teplotu dolna pre ventilator
         <SafeAreaView style={{ flex: 1, backgroundColor: state.darkmode ? '#101820FF' : '#f2f2f2' }}>
-            <Header title='Teplota' />
-
+            <Header title='Teplota' /> {/* pridavame nazov headeru co displayne */}
+            {/* tento view je pre oranovu kartu co ma v sebe 2-3 buttony, karta preto lebo to me elevation a shadow tak je to vytiahnute do popredia a uputa oci */}
             <View style={{
                 padding: 8,
                 backgroundColor: '#F2AA4CFF',
@@ -200,20 +201,26 @@ export default function Voice() {
                 elevation: 20,
                 borderRadius: 20, flex: 0.5, flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', margin: 12, padding: 12
             }}>
+                {/* 2 buttony, v strede je prazdny view pre flex aby som to mohol pekne dat na kraje, buttonom sa meni vyzyor podla statov, je to cez ternatny operator, 
+                 mohlo byt aj cez if cyklus ale zacal som ternarnym tak pokracujem tym, za podmienkov je najprv yes po : je no. Je tu aj nested ternanry cez ktory sa prepina darmode
+                  state.darkmode? je zapnuty darkmode? ak ano tak sa pozre ci state buttonu je on alebo off a podla toho da farby*/}
                 <TouchableOpacity onPress={() => pressHeat()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 16, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? power ? "#101820FF" : '#F2AA4CFF' : power ? "#f2f2f2" : '#F2AA4CFF' }}>
                     <Icon name='power' size={35} style={{ fontFamily: 'Montserrat', color: state.darkmode ? power ? "#F2AA4CFF" : '#101820FF' : power ? "#F2AA4CFF" : '#f2f2f2' }}></Icon>
+                    {/* je darmode on? ↓*/}   {/* ak ano↓ tak check state power           ak nie↓ tak check state power
+                                                                                         a tmavu alebo oranzovu                     a daj bledu a oranzovu */}
                     <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? power ? "#F2AA4CFF" : '#101820FF' : power ? "#F2AA4CFF" : '#f2f2f2' }}>Napájanie</Text>
                 </TouchableOpacity>
                 < View style={{ borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
                 </ View>
 
-
+                {/* button na setovanie teloty, on press sa odpali setTemp co je definovana vyssie a odosle sa POST req, */}
                 <TouchableOpacity onPress={() => setTemp()} style={{ paddingRight: 22, borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
                     <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? '#101820FF' : "#f2f2f2", fontSize: 20 }}> Nastaviť</Text>
                 </TouchableOpacity>
 
 
             </View>
+            {/*slider bar, komunitna libka*/}
             <View style={{ flex: 1, alignItems: 'center' }}>
                 <Text style={{ fontFamily: 'Montserrat', color: '#F2AA4CFF', fontSize: 35 }}>Teplota: {heat}°C </Text>
                 <Slider
@@ -227,7 +234,7 @@ export default function Voice() {
                     maximumTrackTintColor={state.darkmode ? '#f2f2f2' : "#000000"}
                 />
             </View>
-
+            {/*To iste ako som popisal vyssie len pre ventilator */}
             <View style={{
                 flex: 2, justifyContent: 'center', alignItems: 'center', paddingBottom: '10%',
             }}>

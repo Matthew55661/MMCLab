@@ -1,3 +1,4 @@
+/* tu je zadefinovany ako vyzera jeden item flatlistu co vykreluje pri screene s zasuvkami*/
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -6,7 +7,7 @@ import { useContext } from 'react';
 
 export const Item = ({ item, onToggle }) => {
     const [state, dispatch] = useContext(Context);
-    return (
+    return ( /*su tu 2 hlavne veci, vlavo je nazov a v pravo  je button co sa meni podla jeho state, nic extra 2 veci a trochu CSSka, no Reactovej verzii CSSka*/
         <View style={{
             flex: 1, flexDirection: 'row', alignItems: 'center', height: 50, marginVertical: 24, margin: 4,
 

@@ -1,9 +1,9 @@
+/* header , ma nazov ktory sa urcuje cez propsy a tlacitlo co otvara navbar*/
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/core'
 import { DrawerActions } from '@react-navigation/core';
-import { LinearGradient } from 'expo-linear-gradient';
 
 
 export default function Header(props) {
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         height: 120,
-        //backgroundColor: '#203bfe',//'#F2AA4CFF',
+
         paddingTop: 20,
         borderBottomRightRadius: 50,
         borderBottomLeftRadius: 50,
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         flex: 2,
         fontSize: 35,
-        color: '#F2AA4CFF',//'#101820FF',
+        color: '#F2AA4CFF',
         fontFamily: 'Montserrat',
 
     }
