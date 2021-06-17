@@ -1,3 +1,4 @@
+/*screena na svetla*/
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, Dimensions, backgroundcolor, TouchableOpacity, SafeAreaView } from 'react-native';
@@ -10,8 +11,7 @@ import { useContext } from 'react';
 import axios from 'axios';
 
 export default function App(props) {
-    const URL = 'http://b41e2d4c5a31.ngrok.io';
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiNTVlMjY0YjNmMjM0M2JmOGVhOWE4MjU2NzFmZGVlZiIsImlhdCI6MTYyMTI2Njc1MCwiZXhwIjoxOTM2NjI2NzUwfQ.4BSzlYFyMMsMKTqmaQwxlvXPIY70-ZLqd_xhZp-Zyas';
+
     const [color, setColor] = useState()
     const [toggleLED, setToggleLED] = useState()
     const [toggleLamp, setToggleLamp] = useState()
@@ -21,7 +21,7 @@ export default function App(props) {
 
 
 
-    function hexToRgb(hex) {
+    function hexToRgb(hex) { // pouzivam color wheel libku na setovanie farby LED diod, ale libka pracuje s HEX tak to treba parsnut do RGB aby som mohol odoslat v requeste
         var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         return [
             parseInt(result[1], 16),
@@ -38,11 +38,11 @@ export default function App(props) {
         if (toggleLED == false) {
             axios
                 .post(
-                    URL + '/api/services/light/turn_on',
+                    global.url + '/api/services/light/turn_on',
                     reqbody,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + global.token,
                         },
                     }
                 )
@@ -56,10 +56,10 @@ export default function App(props) {
         else if (toggleLED == true) {
             axios
                 .post(
-                    URL + "/api/services/light/turn_off",
+                    global.url + "/api/services/light/turn_off",
                     0, {
                     headers: {
-                        Authorization: 'Bearer ' + token,
+                        Authorization: 'Bearer ' + global.token,
                     },
                 }
                 )
@@ -79,11 +79,11 @@ export default function App(props) {
         if (toggleLamp == false) {
             axios
                 .post(
-                    URL + "/api/services/script/zapni_lampu",
+                    global.url + "/api/services/script/zapni_lampu-",
                     0,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + global.token,
                         },
                     }
                 )
@@ -97,10 +97,10 @@ export default function App(props) {
         else if (toggleLamp == true) {
             axios
                 .post(
-                    URL + "/api/services/script/vypni_lampu",
+                    global.url + "/api/services/script/vypni_lampu-",
                     0, {
                     headers: {
-                        Authorization: 'Bearer ' + token,
+                        Authorization: 'Bearer ' + global.token,
                     },
                 }
                 )
@@ -120,11 +120,11 @@ export default function App(props) {
         if (toggleBiglamp == false) {
             axios
                 .post(
-                    URL + "/api/services/script/stropne_osvetlenie",
+                    global.url + "/api/services/script/stropne_osvetlenie",
                     0,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + global.token,
                         },
                     }
                 )
@@ -138,10 +138,10 @@ export default function App(props) {
         else if (toggleBiglamp == true) {
             axios
                 .post(
-                    URL + "/api/services/script/stropne_osvetlenie",
+                    global.url + "/api/services/script/stropne_osvetlenie",
                     0, {
                     headers: {
-                        Authorization: 'Bearer ' + token,
+                        Authorization: 'Bearer ' + global.token,
                     },
                 }
                 )
@@ -256,19 +256,20 @@ export default function App(props) {
 
                 <StatusBar style="auto" />
                 <View style={{ flex: 1.5, }} >
+                    {/* tento color wheel ma v sebe veltke tlacitko ktore odosle request a v tele ma farbu v RGB uz*/}
                     <ColorPicker
                         onColorChange={vhs => setColor(color)}
                         onColorSelected={color => {
-                            let hexcolor = hexToRgb(color)
-                            console.log(hexcolor)
+                            let hexcolor = hexToRgb(color) // do premennej hexcolor dam color co presla funkciou vyssie co ju parslo na RGH, hej je to dost matuce
+
                             axios
                                 .post(
-                                    URL + '/api/services/light/turn_on',
-                                    { rgb_color: hexcolor },
+                                    global.url + '/api/services/light/turn_on',
+                                    { rgb_color: hexcolor }, //telo requestu kde posielam farbu
 
                                     {
                                         headers: {
-                                            Authorization: 'Bearer ' + token,
+                                            Authorization: 'Bearer ' + global.token,
                                         },
                                     }
                                 )

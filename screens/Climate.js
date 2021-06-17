@@ -1,3 +1,4 @@
+/*screena na ovladanie kurenia a ventilatora*/
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
@@ -9,8 +10,7 @@ import Slider from '@react-native-community/slider';
 
 import axios from 'axios';
 export default function Voice() {
-    const URL = 'http://b41e2d4c5a31.ngrok.io';
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiNTVlMjY0YjNmMjM0M2JmOGVhOWE4MjU2NzFmZGVlZiIsImlhdCI6MTYyMTI2Njc1MCwiZXhwIjoxOTM2NjI2NzUwfQ.4BSzlYFyMMsMKTqmaQwxlvXPIY70-ZLqd_xhZp-Zyas';
+
     const [state, dispatch] = useContext(Context);
     const [power, setPower] = useState();
     const [heat, setHeat] = useState(20);
@@ -24,25 +24,25 @@ export default function Voice() {
         if (power == false)
             axios.all([
                 axios.post(
-                    URL + '/api/services/climate/turn_on',
+                    global.url + '/api/services/climate/turn_on',
                     0,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + global.token,
                         },
                     }
                 )
 
-                    .catch(function (error) {
+                    .catch(function (error) {   /*ak by nastal error tak ho pacne do konzole a mozem debugovat*/
                         // handle error
                         console.log(error);
                     }),
                 axios.post(
-                    URL + '/api/services/climate/set_hvac_mode',
+                    global.url + '/api/services/climate/set_hvac_mode',
                     0,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + global.token,
                         },
                     }
                 )
@@ -58,11 +58,11 @@ export default function Voice() {
         else if (power == true) {
             axios
                 .post(
-                    URL + '/api/services/climate/turn_off',
+                    global.url + '/api/services/climate/turn_off',
                     0,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + global.token,
                         },
                     }
                 )
@@ -76,11 +76,11 @@ export default function Voice() {
     function setTemp() {
         axios
             .post(
-                URL + '/api/services/climate/set_temperature',
+                global.url + '/api/services/climate/set_temperature',
                 { temperature: heat },
                 {
                     headers: {
-                        Authorization: 'Bearer ' + token,
+                        Authorization: 'Bearer ' + global.token,
                     },
                 }
             )
@@ -95,11 +95,11 @@ export default function Voice() {
         if (fan == false) {
             axios
                 .post(
-                    URL + '/api/services/fan/turn_on',
+                    global.url + '/api/services/fan/turn_on',
                     0,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + global.token,
                         },
                     }
                 )
@@ -112,11 +112,11 @@ export default function Voice() {
         else if (fan == true) {
             axios
                 .post(
-                    URL + '/api/services/fan/turn_off',
+                    global.url + '/api/services/fan/turn_off',
                     0,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + global.token,
                         },
                     }
                 )
@@ -132,11 +132,11 @@ export default function Voice() {
         if (oscilate == false) {
             axios
                 .post(
-                    URL + '/api/services/fan/oscilate',
+                    global.url + '/api/services/fan/oscilate',
                     { oscillating: true },
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + global.token,
                         },
                     }
                 )
@@ -149,11 +149,11 @@ export default function Voice() {
         else if (oscilate == true) {
             axios
                 .post(
-                    URL + '/api/services/fan/oscilate',
+                    global.url + '/api/services/fan/oscilate',
                     { oscillating: false },
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + global.token,
                         },
                     }
                 )
@@ -168,11 +168,11 @@ export default function Voice() {
     function setspeed() {
         axios
             .post(
-                URL + '/api/services/fan/set_percentage',
+                global.url + '/api/services/fan/set_percentage',
                 { percentage: fanspeed },
                 {
                     headers: {
-                        Authorization: 'Bearer ' + token,
+                        Authorization: 'Bearer ' + global.token,
                     },
                 }
             )
@@ -200,20 +200,23 @@ export default function Voice() {
                 elevation: 20,
                 borderRadius: 20, flex: 0.5, flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', margin: 12, padding: 12
             }}>
-                <TouchableOpacity onPress={() => pressHeat()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 16, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? power ? "#101820FF" : '#F2AA4CFF' : power ? "#f2f2f2" : '#F2AA4CFF' }}>
+
+                <TouchableOpacity onPress={() => pressHeat()} style={{ borderWidth: 2, borderColor: '#F2AA4CFF', margin: 16, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: state.darkmode ? power ? "#101820FF" : '#F2AA4CFF' : power ? "#f2f2f2" : '#F2AA4CFF' }}>
                     <Icon name='power' size={35} style={{ fontFamily: 'Montserrat', color: state.darkmode ? power ? "#F2AA4CFF" : '#101820FF' : power ? "#F2AA4CFF" : '#f2f2f2' }}></Icon>
+
                     <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? power ? "#F2AA4CFF" : '#101820FF' : power ? "#F2AA4CFF" : '#f2f2f2' }}>Napájanie</Text>
                 </TouchableOpacity>
                 < View style={{ borderWidth: 2, borderColor: '#F2AA4CFF', borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
                 </ View>
 
 
-                <TouchableOpacity onPress={() => setTemp()} style={{ paddingRight: 22, borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
+                <TouchableOpacity onPress={() => setTemp()} style={{ paddingRight: 22, borderColor: '#F2AA4CFF', margin: 14, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
                     <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? '#101820FF' : "#f2f2f2", fontSize: 20 }}> Nastaviť</Text>
                 </TouchableOpacity>
 
 
             </View>
+
             <View style={{ flex: 1, alignItems: 'center' }}>
                 <Text style={{ fontFamily: 'Montserrat', color: '#F2AA4CFF', fontSize: 35 }}>Teplota: {heat}°C </Text>
                 <Slider
@@ -262,7 +265,7 @@ export default function Voice() {
 
 
                     <View style={{ flex: 1, alignSelf: 'flex-start' }}>
-                        <TouchableOpacity onPress={() => setspeed()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', margin: 14, borderRadius: 50, aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
+                        <TouchableOpacity onPress={() => setspeed()} style={{ flex: 1, borderWidth: 2, borderColor: '#F2AA4CFF', aspectRatio: 1, justifyContent: 'center', alignItems: 'center', }}>
                             <Text style={{ fontFamily: 'Montserrat', color: state.darkmode ? '#101820FF' : "#f2f2f2", fontSize: 20, }}> Nastaviť</Text>
                         </TouchableOpacity>
                     </View>

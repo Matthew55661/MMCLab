@@ -1,3 +1,4 @@
+/* nic extra screena na zaves axios je okomentovany v climate.ja a render funkcia tiez, len elementy a ich stylovanie */
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
@@ -10,19 +11,18 @@ import { useContext } from 'react';
 
 
 export default function Curtain() {
-    const URL = 'http://b41e2d4c5a31.ngrok.io';
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiNTVlMjY0YjNmMjM0M2JmOGVhOWE4MjU2NzFmZGVlZiIsImlhdCI6MTYyMTI2Njc1MCwiZXhwIjoxOTM2NjI2NzUwfQ.4BSzlYFyMMsMKTqmaQwxlvXPIY70-ZLqd_xhZp-Zyas';
+
     const [state, dispatch] = useContext(Context);
     const [toggleCurains, setToggleCurains] = useState()
     function stopHandler() {
 
         axios
             .post(
-                URL + '/services/script/stop_zaves',
+                global.url + '/services/script/stop_zaves',
                 0,
                 {
                     headers: {
-                        Authorization: 'Bearer ' + token,
+                        Authorization: 'Bearer ' + global.token,
                     },
                 }
             )
@@ -39,11 +39,11 @@ export default function Curtain() {
 
             axios
                 .post(
-                    URL + '/api/services/script/otvor_zaves',
+                    global.url + '/api/services/script/otvor_zaves',
                     0,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + token,
+                            Authorization: 'Bearer ' + global.token,
                         },
                     }
                 )
@@ -58,10 +58,10 @@ export default function Curtain() {
 
             axios
                 .post(
-                    URL + '/api/services/script/zatvor_zaves',
+                    global.url + '/api/services/script/zatvor_zaves',
                     0, {
                     headers: {
-                        Authorization: 'Bearer ' + token,
+                        Authorization: 'Bearer ' + global.token,
                     },
                 }
                 )
