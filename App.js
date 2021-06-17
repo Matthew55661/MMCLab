@@ -21,7 +21,7 @@ const Drawer = createDrawerNavigator();  //vytvorime si dva druhy navigacie
 const Stack = createStackNavigator();
 
 
-global.url = 'http://b41e2d4c5a31.ngrok.io';
+global.url = 'http://8a865d9e9f65.eu.ngrok.io';
 global.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiNTVlMjY0YjNmMjM0M2JmOGVhOWE4MjU2NzFmZGVlZiIsImlhdCI6MTYyMTI2Njc1MCwiZXhwIjoxOTM2NjI2NzUwfQ.4BSzlYFyMMsMKTqmaQwxlvXPIY70-ZLqd_xhZp-Zyas';
 
 function Mainmenu() { //drawer navigator 
