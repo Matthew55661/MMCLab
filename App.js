@@ -24,14 +24,14 @@ const Stack = createStackNavigator();
 global.url = 'http://b41e2d4c5a31.ngrok.io';
 global.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiNTVlMjY0YjNmMjM0M2JmOGVhOWE4MjU2NzFmZGVlZiIsImlhdCI6MTYyMTI2Njc1MCwiZXhwIjoxOTM2NjI2NzUwfQ.4BSzlYFyMMsMKTqmaQwxlvXPIY70-ZLqd_xhZp-Zyas';
 
-function Mainmenu() {
+function Mainmenu() { //drawer navigator 
 
   return (
 
 
     <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />} initialRouteName="Lights" drawerContentOptions={{ // tu sa posiela custom drawer co je spraveny v drawer.js
       activeTintColor: '#F2AA4CFF',
-      itemStyle: { borderRadius: 20, borderColor: '#F2AA4CFF', borderWidth: 2, },
+      itemStyle: { borderRadius: 20, borderColor: '#F2AA4CFF', borderWidth: 2, },  // tu je to malo co default drawer poskytujhe
       labelStyle: { fontFamily: 'Montserrat', color: '#F2AA4CFF' }
 
 
@@ -101,10 +101,10 @@ export default function App() {
   }
   return (
     <Store>
-      <NavigationContainer  >
-        <Stack.Navigator headerMode='none'>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="MainMenu" component={Mainmenu} />
+      <NavigationContainer  > {/* hlavny komponent navigacie*/}
+        <Stack.Navigator headerMode='none'>{/* stack navigator je parent draweru*/}
+          <Stack.Screen name="Home" component={Home} /> {/* prva screena ktora s zobrazi, Home.js tam prebehne autentifikacia*/}
+          <Stack.Screen name="MainMenu" component={Mainmenu} /> {/* mainmenu=drawer navigator, v BP to mam pekne popisane precitaj a uvidis*/}
         </Stack.Navigator>
 
       </NavigationContainer>

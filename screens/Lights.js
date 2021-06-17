@@ -11,7 +11,8 @@ import { useContext } from 'react';
 import axios from 'axios';
 
 export default function App(props) {
-
+    const URL = 'http://b41e2d4c5a31.ngrok.io'; //URLka na ngrok kde bezi server a token
+    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiNTVlMjY0YjNmMjM0M2JmOGVhOWE4MjU2NzFmZGVlZiIsImlhdCI6MTYyMTI2Njc1MCwiZXhwIjoxOTM2NjI2NzUwfQ.4BSzlYFyMMsMKTqmaQwxlvXPIY70-ZLqd_xhZp-Zyas';
     const [color, setColor] = useState()
     const [toggleLED, setToggleLED] = useState()
     const [toggleLamp, setToggleLamp] = useState()
@@ -38,11 +39,11 @@ export default function App(props) {
         if (toggleLED == false) {
             axios
                 .post(
-                    global.url + '/api/services/light/turn_on',
+                    URL + '/api/services/light/turn_on',
                     reqbody,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + global.token,
+                            Authorization: 'Bearer ' + token,
                         },
                     }
                 )
@@ -56,10 +57,10 @@ export default function App(props) {
         else if (toggleLED == true) {
             axios
                 .post(
-                    global.url + "/api/services/light/turn_off",
+                    URL + "/api/services/light/turn_off",
                     0, {
                     headers: {
-                        Authorization: 'Bearer ' + global.token,
+                        Authorization: 'Bearer ' + token,
                     },
                 }
                 )
@@ -79,11 +80,11 @@ export default function App(props) {
         if (toggleLamp == false) {
             axios
                 .post(
-                    global.url + "/api/services/script/zapni_lampu-",
+                    URL + "/api/services/script/zapni_lampu-",
                     0,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + global.token,
+                            Authorization: 'Bearer ' + token,
                         },
                     }
                 )
@@ -97,10 +98,10 @@ export default function App(props) {
         else if (toggleLamp == true) {
             axios
                 .post(
-                    global.url + "/api/services/script/vypni_lampu-",
+                    URL + "/api/services/script/vypni_lampu-",
                     0, {
                     headers: {
-                        Authorization: 'Bearer ' + global.token,
+                        Authorization: 'Bearer ' + token,
                     },
                 }
                 )
@@ -120,11 +121,11 @@ export default function App(props) {
         if (toggleBiglamp == false) {
             axios
                 .post(
-                    global.url + "/api/services/script/stropne_osvetlenie",
+                    URL + "/api/services/script/stropne_osvetlenie",
                     0,
                     {
                         headers: {
-                            Authorization: 'Bearer ' + global.token,
+                            Authorization: 'Bearer ' + token,
                         },
                     }
                 )
@@ -138,10 +139,10 @@ export default function App(props) {
         else if (toggleBiglamp == true) {
             axios
                 .post(
-                    global.url + "/api/services/script/stropne_osvetlenie",
+                    URL + "/api/services/script/stropne_osvetlenie",
                     0, {
                     headers: {
-                        Authorization: 'Bearer ' + global.token,
+                        Authorization: 'Bearer ' + token,
                     },
                 }
                 )
@@ -160,7 +161,7 @@ export default function App(props) {
         < SafeAreaView style={{ flex: 1, backgroundColor: state.darkmode ? '#101820FF' : '#f2f2f2' }
         }>
 
-            <Header title='Svetlá' />
+            <Header title='Svetlá' />           {/*3 buttony a color picker, buttony klasika nic extra*/}
 
             <View style={{
                 flex: 1,
@@ -264,12 +265,12 @@ export default function App(props) {
 
                             axios
                                 .post(
-                                    global.url + '/api/services/light/turn_on',
+                                    URL + '/api/services/light/turn_on',
                                     { rgb_color: hexcolor }, //telo requestu kde posielam farbu
 
                                     {
                                         headers: {
-                                            Authorization: 'Bearer ' + global.token,
+                                            Authorization: 'Bearer ' + token,
                                         },
                                     }
                                 )
