@@ -17,21 +17,24 @@ import Climate from './screens/Climate';
 import CustomDrawer from './components/drawer'
 
 import Store from './state/store';
+import { getURL } from './storage';
 const Drawer = createDrawerNavigator();  //vytvorime si dva druhy navigacie
 const Stack = createStackNavigator();
 
 
-global.url = 'http://8a865d9e9f65.eu.ngrok.io';
+global.url = 'https://5b31a233b653.eu.ngrok.io';
 global.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiNTVlMjY0YjNmMjM0M2JmOGVhOWE4MjU2NzFmZGVlZiIsImlhdCI6MTYyMTI2Njc1MCwiZXhwIjoxOTM2NjI2NzUwfQ.4BSzlYFyMMsMKTqmaQwxlvXPIY70-ZLqd_xhZp-Zyas';
 
-function Mainmenu() { //drawer navigator 
-
+function Mainmenu() {
+  getURL().then((value) => {
+    global.url = value
+  })
   return (
 
 
     <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />} initialRouteName="Lights" drawerContentOptions={{ // tu sa posiela custom drawer co je spraveny v drawer.js
       activeTintColor: '#F2AA4CFF',
-      itemStyle: { borderRadius: 20, borderColor: '#F2AA4CFF', borderWidth: 2, },  // tu je to malo co default drawer poskytujhe
+      itemStyle: { borderRadius: 20, borderColor: '#F2AA4CFF', borderWidth: 2, },
       labelStyle: { fontFamily: 'Montserrat', color: '#F2AA4CFF' }
 
 
@@ -101,10 +104,10 @@ export default function App() {
   }
   return (
     <Store>
-      <NavigationContainer  > {/* hlavny komponent navigacie*/}
-        <Stack.Navigator headerMode='none'>{/* stack navigator je parent draweru*/}
-          <Stack.Screen name="Home" component={Home} /> {/* prva screena ktora s zobrazi, Home.js tam prebehne autentifikacia*/}
-          <Stack.Screen name="MainMenu" component={Mainmenu} /> {/* mainmenu=drawer navigator, v BP to mam pekne popisane precitaj a uvidis*/}
+      <NavigationContainer  >
+        <Stack.Navigator headerMode='none'>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="MainMenu" component={Mainmenu} />
         </Stack.Navigator>
 
       </NavigationContainer>
